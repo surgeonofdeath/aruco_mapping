@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
              image_transport
              cv_bridge
              tf
+             rosbag
              aruco
              visualization_msgs
              camera_calibration_parsers)

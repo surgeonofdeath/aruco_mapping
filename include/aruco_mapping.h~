@@ -58,8 +58,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // Custom message
 #include <aruco_mapping/ArucoMarker.h>
-#include <rosbag/bag.h>
-#include <std_msgs/Int32.h>
 
 /** \brief Aruco mapping namespace */
 namespace aruco_mapping
@@ -83,12 +81,6 @@ public:
     tf::StampedTransform tf_to_world;               // TF with respect to world's origin
     geometry_msgs::Pose current_camera_pose;        // Position of camera with respect to the marker
     tf::Transform current_camera_tf;                // TF of camera with respect to the marker
-  };
-
-  struct Marker_aak_info
-  {
-    int marker_id_new;
-    geometry_msgs::Pose marker_poses;
   };
 
 public:
@@ -117,7 +109,6 @@ private:
 
   /** \brief Publisher of aruco_mapping::ArucoMarker custom message*/
   ros::Publisher marker_msg_pub_;
-  ros::Publisher aak_marker_msg_pub_;
 
   /** \brief Compute TF from marker detector result*/
   tf::Transform arucoMarker2Tf(const aruco::Marker &marker);
@@ -134,14 +125,10 @@ private:
   int  roi_x_;                                      
   int  roi_y_;                                      
   int  roi_w_;                                     
-  int  roi_h_;  
-    
-  
-  
+  int  roi_h_;     
   
   /** \brief Container holding MarkerInfo data about all detected markers */
   std::vector<MarkerInfo> markers_;
-  std::vector<Marker_aak_info> aak_markers_;
    
   /** \brief Actual TF of camera with respect to world's origin */
   tf::StampedTransform world_position_transform_;
@@ -156,14 +143,6 @@ private:
   int closest_camera_index_;
   int lowest_marker_id_;
   bool first_marker_detected_;
-  int flag_;
-  int aak_marker_id_[5]; 
-  int p_aak_marker_id_[5];   
-  std::vector<int> aak_marker_id;
- 
-  rosbag::Bag bag;
-  std_msgs::Int32 aak_id;
-
   
   tf::TransformListener *listener_;
   tf::TransformBroadcaster broadcaster_;

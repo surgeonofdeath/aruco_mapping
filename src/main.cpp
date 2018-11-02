@@ -40,6 +40,12 @@ main(int argc, char **argv)
 {
   ros::init(argc,argv,"aruco_mapping");
   ros::NodeHandle nh;
+  ROS_INFO_STREAM("In mail function");
+  // static int aak_marker_id[5] = {0};
+  // aak_marker_id[1] = 0;
+  // aak_marker_id[2] = 0;
+  // aak_marker_id[3] = 0;
+  // aak_marker_id[4] = 0;
       
   // Aruco mapping object
   aruco_mapping::ArucoMapping obj(&nh);
