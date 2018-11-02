@@ -1,5 +1,4 @@
 # aruco_positioning_system
-This is mine
 
 [ROS](http://ros.org) package
 
